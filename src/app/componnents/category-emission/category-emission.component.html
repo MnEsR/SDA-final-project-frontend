@@ -1,0 +1,17 @@
+<div>
+    <h2>Category Emission Questionnaire</h2>
+  
+    <form (ngSubmit)="submitAnswers()">
+      <div *ngFor="let question of questions">
+        <h4>{{ question.title }}</h4>
+        <div *ngFor="let choice of question.choices">
+          <label>
+            <input type="radio" name="{{ question.id }}" [(ngModel)]="selectedAnswers[question.id]" [value]="choice">
+            {{ choice }}
+          </label>
+        </div>
+      </div>
+  
+      <button type="submit">Submit</button>
+    </form>
+  </div>

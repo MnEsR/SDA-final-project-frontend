@@ -1,0 +1,182 @@
+<form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
+  <p-card header="Register" [style]="{ width: '360px' }">
+    <div class="field">
+      <label for="fullName">FullName</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="fullName"
+        class="w-full"
+        name="fullName"
+        placeholder="Type your name"
+      />
+      <small
+        *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="fullName.errors?.['required']">Name is required.</div>
+        <div *ngIf="fullName.errors?.['pattern']">Enter a valid Name</div>
+      </small>
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="email"
+        class="w-full"
+        name="email"
+        placeholder="Type your email"
+      />
+      <small
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Email should be valid</div>
+      </small>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        pInputText
+        formControlName="password"
+        class="w-full"
+        name="password"
+        placeholder="Type your password"
+      />
+      <small
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="password.errors?.['required']">Password is required.</div>
+      </small>
+    </div>
+    <div class="field">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        pInputText
+        formControlName="confirmPassword"
+        class="w-full"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+      />
+      <small
+        *ngIf="
+          confirmPassword.invalid &&
+          (confirmPassword.dirty || confirmPassword.touched)
+        "
+        class="block p-error"
+      >
+        <div *ngIf="confirmPassword.errors?.['required']">
+          Confirm the password
+        </div>
+      </small>
+      <small
+        class="block p-error"
+        *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
+      >
+        Password should match
+      </small>
+    </div>
+    <p-button
+      label="Register"
+      styleClass="w-full"
+      [disabled]="registerForm.invalid"
+      type="submit"
+    ></p-button>
+    <div class="mt-2">Already a member? <a routerLink="/login">Login</a></div>
+  </p-card>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>signup works!</p>
+
+<mat-card>
+    <mat-card-content>
+      <div class="header">
+        <p>Create New Account</p>
+      </div>
+      <form (ngSubmit)="onSignup()" name="signupForm" [formGroup]="signupForm">
+
+        <div class="emailInput">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Username</mat-label>
+              <input formControlName="username" matInput placeholder="Enter username" required />
+              <mat-error *ngIf="!signupForm.controls['username'].valid">Username is required</mat-error>
+            </mat-form-field>
+          </div>
+
+        <div class="emailInput">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                formControlName="email"
+                matInput
+                placeholder="Enter email address" required
+              />
+              <mat-error *ngIf="!signupForm.controls['email'].valid">
+                  Email is required
+                </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div>
+            <span>
+              <a class="text-link" class="aLink" routerLink="/auth/forgot-password">Forgot Password?</a>
+            </span>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+              <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>
+                  {{hide ? 'visibility_off' : 'visibility'}}
+              </mat-icon>
+          </button>
+          <mat-error *ngIf="!signupForm.controls['password'].valid">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+          </div>
+
+        
+      </form>
+  
+      
+    </mat-card-content>
+  </mat-card> -->
